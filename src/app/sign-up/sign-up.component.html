@@ -1,0 +1,46 @@
+<div class="container-fluid m-auto bg-body-secondary my-container p-4 mt-5">
+    <div class="alert alert-success" role="alert" *ngIf="message !=''">
+        {{message}}
+      </div>
+    <form [formGroup]="signupForm" (ngSubmit)="performAction()">
+        <div class="mb-3">
+            <label for="id1" class="form-label">User Name</label>
+            <input type="text" class="form-control" id="id1" formControlName="user_name">
+        </div>
+        <div class="mb-3">
+            <label for="id2" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="id2" aria-describedby="emailHelp" formControlName="user_email">
+        </div>
+        <div class="mb-3">
+            <label for="id3" class="form-label">Contact Number</label>
+            <input type="text" class="form-control" id="id3" formControlName="user_contact_no">
+        </div>
+        <div class="mb-3">
+            <label for="id4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="id4" formControlName="user_password">
+        </div>
+        <div class="mb-3 form-check">
+            <label for="exampleInputPassword1" class="form-label me-2">Gender : </label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineCheckbox1" value="male" name="user_gender" formControlName="user_gender">
+                <label class="form-check-label" for="inlineCheckbox1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineCheckbox2" value="female" name="user_gender" formControlName="user_gender">
+                <label class="form-check-label" for="inlineCheckbox2">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="inlineCheckbox3" value="others" name="user_gender" formControlName="user_gender">
+                <label class="form-check-label" for="inlineCheckbox3">Others</label>
+            </div>
+        </div>
+        <div class="d-grid gap-2" *ngIf="!isUpdate">
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+            <button class="btn btn-primary" type="button" routerLink="/login">Login</button>
+        </div>
+        <mat-dialog-actions align="end" *ngIf="isUpdate">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button type="submit" mat-button color="primary" cdkFocusInitial >Save</button>
+          </mat-dialog-actions>
+    </form>
+</div>
